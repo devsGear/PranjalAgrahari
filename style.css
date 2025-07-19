@@ -15,6 +15,23 @@
     box-shadow: 0 20px 50px rgba(108, 99, 255, 0.1);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        padding: 2rem;
+        text-align: center;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 1.5rem;
+        width: 95%;
+    }
 }
 
 .profile-container:hover {
@@ -31,6 +48,21 @@
     box-shadow: 0 15px 35px rgba(108, 99, 255, 0.35);
     animation: pulse 3s infinite;
     z-index: 2;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .profile-photo-wrapper {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-photo-wrapper {
+        width: 180px;
+        height: 180px;
+    }
 }
 
 .profile-photo-wrapper::before {
@@ -647,7 +679,36 @@ h5 {
         display: block;
     }
     
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5rem 2rem 2rem;
+        gap: 1.5rem;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        transition: 0.3s ease-in-out;
+        overflow-y: auto;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-link {
+        width: 100%;
+        font-size: 1.1rem;
+        padding: 0.8rem 0;
+    }
+    
     .hamburger.active {
+        position: fixed;
+        right: 5%;
         background-color: rgba(108, 99, 255, 0.1);
     }
     
@@ -1382,6 +1443,22 @@ h5 {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+@media (max-width: 576px) {
+    .certificates-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .certificates-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 .certificate-card {
@@ -1395,6 +1472,18 @@ h5 {
     height: 200px;
     cursor: pointer;
     transform-origin: center;
+}
+
+@media (max-width: 576px) {
+    .certificate-card {
+        height: 180px;
+    }
+}
+
+@media (max-width: 400px) {
+    .certificate-card {
+        height: 150px;
+    }
 }
 
 .certificate-card:hover {
@@ -1425,7 +1514,9 @@ h5 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    max-width: 100%;
 }
 
 .certificate-card:hover .certificate-img {
@@ -1744,4 +1835,160 @@ footer {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Additional responsive fixes */
+@media (max-width: 576px) {
+    /* General fixes for smaller screens */
+    .profile-container {
+        width: 100%;
+        padding: 1.2rem;
+    }
+    
+    .profile-info p {
+        font-size: 1rem;
+    }
+    
+    .profile-photo-wrapper {
+        width: 160px;
+        height: 160px;
+    }
+    
+    /* Fix for overflow issues */
+    body, html {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Adjust certificate cards for better display */
+    .certificate-card {
+        height: auto;
+    }
+    
+    /* Improve navigation on small screens */
+    .nav-links {
+        width: 80%;
+    }
+    
+    /* Better form handling on small screens */
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .form-group {
+        width: 100%;
+    }
+}
+
+/* Extra small device fixes */
+@media (max-width: 400px) {
+    .profile-container {
+        padding: 1rem;
+    }
+    
+    .profile-photo-wrapper {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .profile-info h1 {
+        font-size: 1.8rem;
+    }
+    
+    .typewriter {
+        font-size: 1.2rem;
+    }
+    
+    .section {
+        padding: 3rem 0.8rem;
+    }
+    
+    .social-icon, .social-link {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .certificate-card {
+        max-height: 200px;
+    }
+}
+
+/* Final mobile fixes */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Prevent content overflow */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ensure images don't overflow */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 360px) {
+    .profile-info h1 {
+        font-size: 1.8rem;
+    }
+    
+    .typewriter {
+        font-size: 1.1rem;
+    }
+    
+    .section {
+        padding: 3rem 0.7rem;
+    }
+    
+    .profile-photo-wrapper {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .about-card {
+        padding: 1rem;
+    }
+}
+
+/* Form validation styles */
+.error-message {
+    color: #d90429;
+    background-color: rgba(217, 4, 41, 0.08);
+    border-left: 3px solid #d90429;
+    padding: 12px;
+    border-radius: 5px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.success-message {
+    color: #38b000;
+    background-color: rgba(56, 176, 0, 0.08);
+    border-left: 3px solid #38b000;
+    padding: 12px;
+    border-radius: 5px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+input.error, 
+textarea.error {
+    border-color: #d90429 !important;
+    background-color: rgba(217, 4, 41, 0.03) !important;
 }

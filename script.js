@@ -184,23 +184,24 @@ modal.addEventListener("touchend", e => {
 // Contact form validation
 if (contactForm) {
     contactForm.addEventListener("submit", function(e) {
-        e.preventDefault();
         const name = contactForm.name.value.trim();
         const email = contactForm.email.value.trim();
         const subject = contactForm.subject ? contactForm.subject.value.trim() : "";
         const message = contactForm.message.value.trim();
         const formMessage = document.getElementById("formMessage");
         let error = "";
+        
         if (!name) error = "Please enter your name.";
         else if (!email || !/^\S+@\S+\.\S+$/.test(email)) error = "Please enter a valid email.";
         else if (!message) error = "Please enter your message.";
+        
         if (error) {
-            formMessage.textContent = error;
-            formMessage.style.color = "#d90429";
+            e.preventDefault();
+            formMessage.innerHTML = `<div class="error-message">${error}</div>`;
         } else {
-            formMessage.textContent = "Thank you for contacting me!";
-            formMessage.style.color = "#6c63ff";
-            contactForm.reset();
+            // Show sending message but allow form to submit to FormSubmit
+            formMessage.innerHTML = '<div class="success-message">Sending message...</div>';
+            // Form will submit naturally to FormSubmit
         }
     });
 }
